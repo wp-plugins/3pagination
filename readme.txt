@@ -11,7 +11,7 @@ Navigate to any page between 1 and 999 with no more than 3 clicks.
 
 == Description ==
 
-Give your visitors the ability to easily access all your site's content. This is meant for sites with high page numbers. Any page between 1 and 999 can be reached with never more than 3 clicks (see screenshots).
+Give your visitors the ability to easily access all your site's content. This is meant for sites with high page numbers. Any page between 1 and 999 can be accessed with a maximum of 3 clicks (see screenshots).
 
 So far, this code has been tested on archive an category pages. Stable version will come soon.
 
