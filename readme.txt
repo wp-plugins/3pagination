@@ -18,7 +18,7 @@ Give your visitors the ability to easily access all your site's content. This is
 
 1. Upload `3pagination.php` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Display the navigation using 'threepagination::draw();'
+3. Display the navigation using <?php threepagination::draw(); ?>
 
 == Frequently Asked Questions ==
 
