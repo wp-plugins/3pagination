@@ -135,7 +135,7 @@ if ( ! class_exists( 'threepagination' ) ) {
 			}
 
 			// Glue together the HTML string
-			$page_string = "<div class='threepagination classic'><div class='threepagination-pages'>" . $page_string . "</div></div>";
+			$page_string = "<div class='threepagination $css'><div class='threepagination-pages'>" . $page_string . "</div></div>";
 
 			// Return string
 			return $page_string;
@@ -145,12 +145,11 @@ if ( ! class_exists( 'threepagination' ) ) {
 		 * Main display function. Should be called in a static fashion:
 		 * threepagination::draw();
 		 * 
-		 * @global object $wp_query | the current query object used to gather pagination information
-		 * @global type $wp
 		 * @param bool $pretty | pretty permalink structure. TRUE or FALSE, defaults to TRUE
 		 * @param int $num_items | can be used to override the global number of items
 		 * @param int $per_page | can be used to override the global posts per page
 		 * @param bool $labels | show labels, TRUE or FALSE
+		 * @param string $css | the css class name appended to the 'threepagination' wrapper div
 		 * @return void 
 		 * 
 		 * @since 0.1a
