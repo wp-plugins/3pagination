@@ -19,7 +19,7 @@ So far, this code has been tested on archive an category pages. Stable version w
 
 1. Upload `3pagination.php` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Display the navigation using <?php threepagination::draw(); ?>
+3. Display the navigation using `<?php threepagination::draw(); ?>`
 
 == Frequently Asked Questions ==
 
