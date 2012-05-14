@@ -58,6 +58,10 @@ Displays the navigation on a website that uses pretty urls, takes the standard p
 = 0.1a =
 - Initial version
 
+= 0.2a =
+- Improved arrow navigation
+- replaced $num_items and $per_page with $max_num_pages
+
 == A brief Markdown Example ==
 
 `<?php threepagination::draw(); ?>`
