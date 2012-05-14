@@ -25,16 +25,21 @@ Please leave feedback, bug reports or comments at https://github.com/paddelboot/
 3. Display the navigation using `<?php threepagination::draw(); ?>`
 
 </h4>Functions</h4>
-draw ( $pretty = TRUE, $num_items = FALSE, $per_page = FALSE, $labels = TRUE, $css = 'classic' )
+`draw ( $pretty = TRUE, $max_num_pages = FALSE, $labels = TRUE, $css = 'classic' )`
+Display the navigation
 <ul>
 <li>$pretty | Are you using pretty permalinks?</li>
-<li>$num_items | Can be used to override the global number of items</li>
 <li>$max_num_pages | Limit to a maximum number of pages</li>
 <li>$labels | Display or not the navigation arrows</li>
 <li>$css | CSS class name that will be appended to the main div container</li>
 </ul>
 
-== Frequently Asked Questions ==
+`get ( $pretty = TRUE, $num_items = FALSE, $per_page = FALSE, $labels = TRUE, $css = 'classic' )`
+Return the navigation as a HTML string
+
+<h4>Example usages</h4>
+`threepagination::draw ( TRUE, FALSE, FALSE, 'my_custom_class' )`
+Displays the navigation on a website that uses pretty urls, takes the standard page count, hides the navigation arrows and uses a CSS class 'my_custom_class'
 
 
 == Screenshots ==
