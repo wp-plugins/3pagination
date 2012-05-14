@@ -34,18 +34,12 @@ if ( ! class_exists( 'threepagination' ) ) {
 		 * 
 		 * @since 0.1a
 		 */
-		public static function get ( $pretty = TRUE, $num_items = FALSE, $per_page = FALSE, $labels = TRUE, $css = 'classic' ) {
+		public static function get ( $pretty = TRUE, $max_num_pages = FALSE, $labels = TRUE, $css = 'classic' ) {
 
 			global $wp_query, $wp;
-			
-			// Get total items found
-			$num_items = ( FALSE == $num_items ) ? $wp_query->found_posts : $num_items;
 
-			// Get posts per page
-			$per_page = ( FALSE == $per_page ) ? $wp_query->get( 'posts_per_page' ) : $per_page;
-
-			// Calculate and round the total number of pages
-			$total_pages = $wp_query->max_num_pages;
+			// Get the page count
+			$total_pages = ( FALSE == $max_num_pages ) ? $wp_query->max_num_pages : $max_num_pages;
 
 			// No need for navi
 			if ( 1 == $total_pages )
@@ -123,19 +117,19 @@ if ( ! class_exists( 'threepagination' ) ) {
 			if ( FALSE !== $labels ) {
 				if ( $on_page > 1 ) {
 					$i = $on_page - 1;
-					$url = self::url( $wp, $i, $pretty );
-					$page_string = " &nbsp;<a class='page-numbers' href='" . $url . "'>&laquo;</a>&nbsp;&nbsp;" . $page_string;
+					$page_string = "<a class='page-numbers label-first' href='" . self::url( $wp, 1, $pretty ) . "'>&laquo;</a>&nbsp;" . $page_string;
+					$page_string = "<a class='page-numbers label-previous' href='" . self::url( $wp, $i, $pretty ) . "'>&lsaquo;</a>&nbsp;" . $page_string;
 				}
 
 				if ( $on_page < $total_pages ) {
 					$i = $on_page + 1;
-					$url = self::url( $wp, $i, $pretty );
-					$page_string .= "&nbsp;&nbsp;<a class='page-numbers' href='" . $url . "'>&raquo;</a>&nbsp;";
+					$page_string .= "&nbsp;<a class='page-numbers label-next' href='" . self::url( $wp, $i, $pretty ) . "'>&rsaquo;</a>";
+					$page_string .= "&nbsp;<a class='page-numbers label-last' href='" . self::url( $wp, $total_pages, $pretty ) . "'>&raquo;</a>";
 				}
 			}
 
 			// Glue together the HTML string
-			$page_string = "<div class='threepagination $css'><div class='threepagination-pages'>" . $page_string . "</div></div>";
+			$page_string = "<div class='threepagination classic'><div class='threepagination-pages'>" . $page_string . "</div></div>";
 
 			// Return string
 			return $page_string;
@@ -145,18 +139,19 @@ if ( ! class_exists( 'threepagination' ) ) {
 		 * Main display function. Should be called in a static fashion:
 		 * threepagination::draw();
 		 * 
+		 * @global object $wp_query | the current query object used to gather pagination information
+		 * @global type $wp
 		 * @param bool $pretty | pretty permalink structure. TRUE or FALSE, defaults to TRUE
 		 * @param int $num_items | can be used to override the global number of items
 		 * @param int $per_page | can be used to override the global posts per page
 		 * @param bool $labels | show labels, TRUE or FALSE
-		 * @param string $css | the css class name appended to the 'threepagination' wrapper div
 		 * @return void 
 		 * 
 		 * @since 0.1a
 		 */
-		public static function draw ( $pretty = TRUE, $num_items = FALSE, $per_page = FALSE, $labels = TRUE, $css = 'classic' ) {
+		public static function draw ( $pretty = TRUE, $max_num_pages = FALSE, $labels = TRUE, $css = 'classic' ) {
 
-			echo self::get( $pretty, $num_items, $per_page, $labels, $css );
+			echo self::get( $pretty, $max_num_pages, $labels, $css );
 		}
 		
 		/**
