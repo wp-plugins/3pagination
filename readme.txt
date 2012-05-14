@@ -15,7 +15,7 @@ Give your visitors the ability to easily access all your site's content. This is
 
 So far, this code has been tested on archive an category pages. Stable version will come soon.
 
-Please leave feedback, bug reports or comments at https://github.com/paddelboot/3pagination
+Please leave feedback, bug reports or comments at https://github.com/paddelboot/3pagination/issues
 
 == Installation ==
 
