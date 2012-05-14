@@ -24,7 +24,7 @@ Please leave feedback, bug reports or comments at https://github.com/paddelboot/
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Display the navigation using `<?php threepagination::draw(); ?>`
 
-</h4>Functions</h4>
+<h4>Functions</h4>
 `draw ( $pretty = TRUE, $max_num_pages = FALSE, $labels = TRUE, $css = 'classic' )`
 Display the navigation
 <ul>
