@@ -31,7 +31,6 @@ if ( ! class_exists( 'threepagination' ) ) {
 		 * @param bool $labels | show labels, TRUE or FALSE
 		 * @param string $css | the css class name appended to the 'threepagination' wrapper div
 		 * @return void 
-		 * 
 		 * @since 0.1a
 		 */
 		public static function get ( $pretty = TRUE, $max_num_pages = FALSE, $labels = TRUE, $css = 'classic' ) {
