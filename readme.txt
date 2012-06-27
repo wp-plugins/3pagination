@@ -46,7 +46,9 @@ Save the pagination in the `$string` var.
 
 == Screenshots ==
 
-1. Example of a pagination display
+1. Example of a pagination display, classic style
+2. classic-glow style
+3. classic-small style
 
 
 == Changelog ==
@@ -61,6 +63,7 @@ Save the pagination in the `$string` var.
 
 = 1.0 =
 - Stable version
+- Fixed support of custom css styles via function parameter
 
 == A brief Markdown Example ==
 

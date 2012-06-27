@@ -127,7 +127,7 @@ if ( ! class_exists( 'threepagination' ) ) {
 			}
 
 			// Glue together the HTML string
-			$page_string = "<div class='threepagination classic'><div class='threepagination-pages'>" . $page_string . "</div></div>";
+			$page_string = "<div class='threepagination $css'><div class='threepagination-pages'>" . $page_string . "</div></div>";
 
 			// Return string
 			return $page_string;
