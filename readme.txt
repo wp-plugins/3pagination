@@ -13,7 +13,7 @@ Navigate to any page between 1 and 999 with no more than 3 clicks.
 
 Give your visitors the ability to easily access all your site's content. This is meant for sites with high page numbers. Any page between 1 and 999 can be accessed with a maximum of 3 clicks (see screenshots).
 
-So far, this code has been tested on index, archive and category pages.
+So far, this code has been tested on index, archive and category pages of some of the most popular WordPress themes.
 
 Please leave feedback, bug reports or comments at https://github.com/paddelboot/3pagination/issues
 
