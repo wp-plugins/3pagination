@@ -26,8 +26,7 @@ if ( ! class_exists( 'threepagination' ) ) {
 		 * @global object $wp_query | the current query object used to gather pagination information
 		 * @global type $wp
 		 * @param bool $pretty | pretty permalink strukture. TRUE or FALSE
-		 * @param int $num_items | can be used to override the global number of items
-		 * @param int $per_page | can be used to override the global posts per page
+		 * @param int $max_num_pages | total page count
 		 * @param bool $labels | show labels, TRUE or FALSE
 		 * @param string $css | the css class name appended to the 'threepagination' wrapper div
 		 * @return void 
@@ -122,8 +121,8 @@ if ( ! class_exists( 'threepagination' ) ) {
 
 				if ( $on_page < $total_pages ) {
 					$i = $on_page + 1;
-					$page_string .= "&nbsp;<a class='page-numbers label-next' href='" . self::url( $wp, $i, $pretty ) . "'>&rsaquo;</a>";
 					$page_string .= "&nbsp;<a class='page-numbers label-last' href='" . self::url( $wp, $total_pages, $pretty ) . "'>&raquo;</a>";
+					$page_string .= "&nbsp;<a class='page-numbers label-next' href='" . self::url( $wp, $i, $pretty ) . "'>&rsaquo;</a>";
 				}
 			}
 
