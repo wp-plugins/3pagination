@@ -15,10 +15,9 @@ Give your visitors the ability to easily access all your site's content. Any pag
 <ul>
 <li>Easy access to all your website's content.</li>
 <li>Please searchengines by creating a more complete internal linking structure.</li>
-<li>No need to modify theme files (see below)!</li>
+<li>No need to modify theme files (see Installation section)!</li>
 <li>So far, this code has been tested on index, archive, category and search pages of some of the most popular WordPress themes.</li>
 </ul>
-
 Please leave feedback, bug reports or comments at https://github.com/paddelboot/3pagination/issues.
 
 == Installation ==
