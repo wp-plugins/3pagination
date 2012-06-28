@@ -2,8 +2,8 @@
 Contributors: paddelboot
 Tags: pagination
 Requires at least: 3.3.2
-Tested up to: 3.4
-Stable tag: 1.0
+Tested up to: 3.4.1
+Stable tag: 1.2b
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -11,11 +11,15 @@ Navigate to any page between 1 and 999 with no more than 3 clicks.
 
 == Description ==
 
-Give your visitors the ability to easily access all your site's content. This is meant for sites with high page numbers. Any page between 1 and 999 can be accessed with a maximum of 3 clicks (see screenshots).
+Give your visitors the ability to easily access all your site's content. Any page between 1 and 999 can be accessed with a maximum of 3 clicks (see screenshots).
+<ul>
+<li>Easy access to all your website's content.</li>
+<li>Please searchengines by creating a more complete internal linking structure.</li>
+<li>No need to modify theme files (see below)!</li>
+<li>So far, this code has been tested on index, archive, category and search pages of some of the most popular WordPress themes.</li>
+</ul>
 
-So far, this code has been tested on index, archive and category pages of some of the most popular WordPress themes.
-
-Please leave feedback, bug reports or comments at https://github.com/paddelboot/3pagination/issues
+Please leave feedback, bug reports or comments at https://github.com/paddelboot/3pagination/issues.
 
 == Installation ==
 
@@ -24,7 +28,12 @@ Please leave feedback, bug reports or comments at https://github.com/paddelboot/
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Display the pagination using `<?php if ( class_exists( 'threepagination' ) ) : threepagination::draw(); endif; ?>`
 
+<h4>Implementation</h4>
+All options can be set in an options page, the pagination container can be injected or appended to the existing DOM.
+
 <h4>Functions</h4>
+You can, if you want (or to have your website degrade gracefully), call the class methods in your theme files.
+
 draw() : Display the pagination
 `draw ( $pretty = TRUE, $max_num_pages = FALSE, $labels = TRUE, $css = 'classic' )`
 <ul>
@@ -64,6 +73,11 @@ Save the pagination in the `$string` var.
 = 1.0 =
 - Stable version
 - Fixed support of custom css styles via function parameter
+
+= 1.2b =
+- Added backend settings page
+- Inject pagination into DOM
+- Support for search templates
 
 == A brief Markdown Example ==
 
