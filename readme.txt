@@ -53,10 +53,10 @@ Displays the pagination on a website that uses pretty urls, takes the standard p
 Save the pagination in the `$string` var.
 
 == Screenshots ==
-
-1. Example of a pagination display, 'classic' style
-2. 'classic-glow' style
-3. 'classic-small' style
+1. Options page: preview, labels, placement and CSS
+2. Example of a pagination display, 'classic' style
+3. 'classic-glow' style
+4. 'classic-small' style
 
 
 == Changelog ==
