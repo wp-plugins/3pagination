@@ -18,6 +18,7 @@ Give your visitors the ability to easily access all your site's content. Any pag
 <li>No need to modify theme files! (see installation instructions)</li>
 <li>Modify labels and CSS and preview pagination in backend before using it in your frontend pages!</li>
 <li>So far, this code has been tested on index, archive, category and search pages of some of the most popular WordPress themes.</li>
+<li>Both default and pretty permalink structure are supported</li>
 </ul>
 Please leave feedback, bug reports or comments at https://github.com/paddelboot/3pagination/issues
 
