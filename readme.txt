@@ -58,7 +58,6 @@ Save the pagination in the `$string` var.
 1. Option page: preview, label, placement and CSS
 2. Example of a pagination display, 'classic' style
 3. 'classic-glow' style
-4. 'classic-small' style
 
 
 == Changelog ==
