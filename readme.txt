@@ -23,14 +23,15 @@ Please leave feedback, bug reports or comments at https://github.com/paddelboot/
 == Installation ==
 
 <h4>Installation</h4>
-1. Upload `3pagination.php` to the `/wp-content/plugins/` directory
+1. Upload `3pagination.php` to the `/wp-content/plugins/` directory OR choose Plugins->Add New and type "3pagination".
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Display the pagination using `<?php if ( class_exists( 'threepagination' ) ) : threepagination::draw(); endif; ?>`
+3. Go to Tools->3pagination to set labels, placement and CSS.
+4. Done!
 
 <h4>Implementation</h4>
 All options can be set in an options page, the pagination container can be injected or appended to the existing DOM.
 
-<h4>Functions</h4>
+<h4>Implementation - old school</h4>
 You can, if you want (or to have your website degrade gracefully), call the class methods in your theme files.
 
 draw() : Display the pagination
