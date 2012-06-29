@@ -23,9 +23,9 @@ Please leave feedback, bug reports or comments at https://github.com/paddelboot/
 == Installation ==
 
 <h4>Installation</h4>
-1. Upload `3pagination.php` to the `/wp-content/plugins/` directory OR choose Plugins->Add New and type "3pagination".
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Go to Tools->3pagination to set labels, placement and CSS.
+1. Upload `3pagination.php` to the `/wp-content/plugins/` directory OR choose `Plugins->Add New` and type "3pagination".
+2. Activate the plugin through the `Plugins` menu in WordPress
+3. Go to `Tools->3pagination` to set labels, placement and CSS.
 4. Done!
 
 <h4>Implementation</h4>
@@ -37,10 +37,10 @@ You can, if you want (or to have your website degrade gracefully), call the clas
 draw() : Display the pagination
 `draw ( $pretty = TRUE, $max_num_pages = FALSE, $labels = TRUE, $css = 'classic' )`
 <ul>
-<li>$pretty | Are you using pretty permalinks?</li>
-<li>$max_num_pages | Limit to a maximum number of pages</li>
-<li>$labels | Display or not the navigation arrows</li>
-<li>$css | CSS class name that will be appended to the main div container</li>
+<li>$pretty (optional) | Are you using pretty permalinks?</li>
+<li>$max_num_pages (optional) | Limit to a maximum number of pages</li>
+<li>$labels (optional) | Display or not the navigation arrows</li>
+<li>$css (optional) | CSS class name that will be appended to the main div container</li>
 </ul>
 
 get() : Return the pagination as a HTML string
@@ -59,10 +59,6 @@ Save the pagination in the `$string` var.
 2. Example of a pagination display, 'classic' style
 3. 'classic-glow' style
 4. 'classic-small' style
-
-
-
-
 
 == Changelog ==
 
