@@ -30,7 +30,15 @@ Please leave feedback, bug reports or comments at https://github.com/paddelboot/
 4. Done!
 
 <h4>Implementation</h4>
-All options can be set in an options page, the pagination container can be injected or appended to the existing DOM.
+All options can be set in an options page, the pagination container can be injected or appended to the existing DOM. 
+If you are unsure about the HTML structure of your Website, you can do the following (in Firefox):
+<ol>
+<li>Right click the spot where you wish the pagination to appear and choose `Inspect Element (Q)` from the menu list</li>
+<li>Copy the id of the container, i.e. #wrapper.someclass</li>
+<li>To append or prepend the pagination to this container, paste it's id into the appropriate field of the Placement section under `Tools->3pagination`</li>
+<li>Choose on which pages (archives, search etc.) the pagination should appear. Done!</li>
+</ol>
+
 
 <h4>Implementation - old school</h4>
 You can, if you want (or to have your website degrade gracefully), call the class methods in your theme files.
