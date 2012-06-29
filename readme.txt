@@ -13,12 +13,12 @@ Navigate to any page between 1 and 999 with no more than 3 clicks.
 
 Give your visitors the ability to easily access all your site's content. Any page between 1 and 999 can be accessed with a maximum of 3 clicks (see screenshots).
 <ul>
-<li>Easy access to all your website's content.</li>
-<li>Please searchengines by creating a more complete internal linking structure.</li>
-<li>No need to modify theme files (see Installation section)!</li>
+<li>Easy access to all your website's content</li>
+<li>Please searchengines by creating a more complete internal linking structure</li>
+<li>No need to modify theme files (see below)!</li>
 <li>So far, this code has been tested on index, archive, category and search pages of some of the most popular WordPress themes.</li>
 </ul>
-Please leave feedback, bug reports or comments at https://github.com/paddelboot/3pagination/issues.
+Please leave feedback, bug reports or comments at https://github.com/paddelboot/3pagination/issues
 
 == Installation ==
 
@@ -54,9 +54,10 @@ Save the pagination in the `$string` var.
 
 == Screenshots ==
 
-1. Example of a pagination display, 'classic' style
-2. 'classic-glow' style
-3. 'classic-small' style
+1. Option page: preview, label, placement and CSS
+2. Example of a pagination display, 'classic' style
+3. 'classic-glow' style
+4. 'classic-small' style
 
 
 == Changelog ==
