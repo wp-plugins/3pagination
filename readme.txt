@@ -7,7 +7,7 @@ Stable tag: 1.3b
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Navigate to any page between 1 and 999 with no more than 3 clicks. No need to modify theme files.
+Navigate to any page between 1 and 999 with no more than 3 clicks - no need to modify theme files.
 
 == Description ==
 
