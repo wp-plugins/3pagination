@@ -3,7 +3,7 @@ Contributors: paddelboot
 Tags: pagination
 Requires at least: 3.3.2
 Tested up to: 3.4.1
-Stable tag: 1.2b
+Stable tag: 1.3b
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,21 +27,21 @@ Please leave feedback, bug reports or comments at https://github.com/paddelboot/
 <h4>Installation</h4>
 1. Upload `3pagination.php` to the `/wp-content/plugins/` directory OR choose `Plugins->Add New` and type "3pagination".
 2. Activate the plugin through the `Plugins` menu in WordPress
-3. Go to `Tools->3pagination` to set labels, placement and CSS.
+3. Go to `Settings->3pagination` to set labels, placement and CSS.
 4. Done!
 
-<h4>Implementation</h4>
+<h4>How to use</h4>
 All options can be set in an options page, the pagination container can be injected or appended to the existing DOM. 
 If you are unsure about the HTML structure of your Website, you can do the following (in Firefox):
 <ol>
 <li>Right click the spot where you wish the pagination to appear and choose `Inspect Element (Q)` from the menu list</li>
 <li>Copy the id of the container, i.e. #wrapper.someclass</li>
-<li>To append or prepend the pagination to this container, paste it's id into the appropriate field of the Placement section under `Tools->3pagination`</li>
+<li>To append or prepend the pagination to this container, paste it's id into the appropriate field of the Placement section under `Settings->3pagination`</li>
 <li>Choose on which pages (archives, search etc.) the pagination should appear. Done!</li>
 </ol>
 
 
-<h4>Implementation - old school</h4>
+<h4>How to use - old school</h4>
 You can, if you want (or to have your website degrade gracefully), call the class methods in your theme files.
 
 draw() : Display the pagination
@@ -65,10 +65,8 @@ Save the pagination in the `$string` var.
 
 == Screenshots ==
 
-1. Option page: preview, label, placement and CSS
-2. Example of a pagination display, 'classic' style
-3. 'classic-glow' style
-4. 'classic-small' style
+1. Settings page: preview, label, placement, CSS and other settings
+2. Injected below header
 
 == Changelog ==
 
@@ -88,6 +86,14 @@ Save the pagination in the `$string` var.
 - Added backend settings page
 - Inject pagination into DOM
 - Support for search templates
+
+= 1.3b =
+- Added checkbox for pretty URLs;
+- Added option for max no. of pages
+- Fixed link URL building;
+- German localization;
+- Plugin loading enqueued;
+- Fixed bug with pagination link;
 
 == A brief Markdown Example ==
 

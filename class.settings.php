@@ -1,4 +1,12 @@
 <?php
+/**
+ * @TODO: 
+ * - Set placement template globally, not for each option
+ * - Pretty URLs or not
+ * - Max no. of pages
+ * 
+ *  
+ */
 if ( !class_exists( 'threepagination_settings' ) ) {
 
 	class threepagination_settings extends threepagination {
@@ -16,7 +24,7 @@ if ( !class_exists( 'threepagination_settings' ) ) {
 		 * @since 0.1 
 		 */
 		public function __construct() {
-
+			
 			// Management page submenu
 			add_filter( 'admin_menu', array( $this, 'add_submenu' ) );
 
@@ -31,20 +39,20 @@ if ( !class_exists( 'threepagination_settings' ) ) {
 		 */
 		public function add_submenu() {
 
-			add_management_page( __( '3pagination Configuration', $this->textdomain ), '3pagination', 'activate_plugins', '3pagination', array( $this, 'draw_settings_page' ) );
+			add_options_page( __( '3pagination Configuration', parent::$_object->textdomain ), '3pagination', 'activate_plugins', '3pagination', array( $this, 'draw_settings_page' ) );
 		}
 
 		public function draw_settings_page() {
 			?>
 			<div class="wrap">
 				<?php screen_icon( 'options-general' ); ?>
-				<h2><?php _e( '3pagination Settings', $this->textdomain ); ?></h2>
+				<h2><?php _e( '3pagination Settings', parent::$_object->textdomain ); ?></h2>
 
 				<form action="options.php" method="post">
 					<?php 
 					settings_fields( '3pagination_settings' );
 					do_settings_sections( '3pagination' );
-					submit_button( __( 'Save Changes', $this->textdomain ), 'button-primary', 'submit', TRUE );
+					submit_button( __( 'Save Changes', parent::$_object->textdomain ), 'button-primary', 'submit', TRUE );
 					?>
 				</form>
 			</div>
@@ -53,6 +61,8 @@ if ( !class_exists( 'threepagination_settings' ) ) {
 
 		/**
 		 * Init the settings API 
+		 * 
+		 * @TODO checkbox "I am using pretty URLS"
 		 * 
 		 * @since 0.1
 		 */
@@ -64,29 +74,33 @@ if ( !class_exists( 'threepagination_settings' ) ) {
 
 			// Add the section to reading settings so we can add our
 			// fields to it			
-			add_settings_section( '3pagination_preview', __( 'Preview', $this->textdomain ), array( $this, 'section_preview' ), '3pagination' );
-			add_settings_section( '3pagination_labels', __( 'Labels', $this->textdomain ), array( $this, 'section_labels' ), '3pagination' );
-			add_settings_section( '3pagination_placement', __( 'Placement', $this->textdomain ), array( $this, 'section_placement' ), '3pagination' );
-			add_settings_section( '3pagination_css', __( 'DOM & CSS', $this->textdomain ), array( $this, 'section_css' ), '3pagination' );
+			add_settings_section( '3pagination_preview', __( 'Preview', parent::$_object->textdomain ), array( $this, 'section_preview' ), '3pagination' );
+			add_settings_section( '3pagination_labels', __( 'Labels', parent::$_object->textdomain ), array( $this, 'section_labels' ), '3pagination' );
+			add_settings_section( '3pagination_placement', __( 'Placement', parent::$_object->textdomain ), array( $this, 'section_placement' ), '3pagination' );
+			add_settings_section( '3pagination_css', __( 'DOM & CSS', parent::$_object->textdomain ), array( $this, 'section_css' ), '3pagination' );
+			add_settings_section( '3pagination_other', __( 'Other options', parent::$_object->textdomain ), array( $this, 'section_other' ), '3pagination' );
 
 			// Add the field with the names and function to use for our new
 			// settings, put it in our new section
-			add_settings_field( 'threepagination_preview', __( 'Preview of pagination', $this->textdomain ), array( $this, 'preview' ), '3pagination', '3pagination_preview' );
+			add_settings_field( 'threepagination_preview', __( 'Preview of pagination', parent::$_object->textdomain ), array( $this, 'preview' ), '3pagination', '3pagination_preview' );
 
-			add_settings_field( 'threepagination_labels_show', __( 'Show labels', $this->textdomain ), array( $this, 'labels_show' ), '3pagination', '3pagination_labels' );
-			add_settings_field( 'threepagination_labels_previous', __( 'Previous page', $this->textdomain ), array( $this, 'labels_previous' ), '3pagination', '3pagination_labels' );
-			add_settings_field( 'threepagination_labels_next', __( 'Next page', $this->textdomain ), array( $this, 'labels_next' ), '3pagination', '3pagination_labels' );
-			add_settings_field( 'threepagination_labels_first', __( 'First page', $this->textdomain ), array( $this, 'labels_first' ), '3pagination', '3pagination_labels' );
-			add_settings_field( 'threepagination_labels_last', __( 'Last page', $this->textdomain ), array( $this, 'labels_last' ), '3pagination', '3pagination_labels' );
+			add_settings_field( 'threepagination_labels_show', __( 'Show labels', parent::$_object->textdomain ), array( $this, 'labels_show' ), '3pagination', '3pagination_labels' );
+			add_settings_field( 'threepagination_labels_previous', __( 'Previous page', parent::$_object->textdomain ), array( $this, 'labels_previous' ), '3pagination', '3pagination_labels' );
+			add_settings_field( 'threepagination_labels_next', __( 'Next page', parent::$_object->textdomain ), array( $this, 'labels_next' ), '3pagination', '3pagination_labels' );
+			add_settings_field( 'threepagination_labels_first', __( 'First page', parent::$_object->textdomain ), array( $this, 'labels_first' ), '3pagination', '3pagination_labels' );
+			add_settings_field( 'threepagination_labels_last', __( 'Last page', parent::$_object->textdomain ), array( $this, 'labels_last' ), '3pagination', '3pagination_labels' );
 		
-			add_settings_field( 'threepagination_css_class', __( 'Set CSS class', $this->textdomain ), array( $this, 'css_class' ), '3pagination', '3pagination_css' );			
+			add_settings_field( 'threepagination_css_class', __( 'Set CSS class', parent::$_object->textdomain ), array( $this, 'css_class' ), '3pagination', '3pagination_css' );			
 			
-			add_settings_field( 'threepagination_placement_header', __( 'Inject below header', $this->textdomain ), array( $this, 'placement_header' ), '3pagination', '3pagination_placement' );
-			add_settings_field( 'threepagination_placement_footer', __( 'Inject above footer', $this->textdomain ), array( $this, 'placement_footer' ), '3pagination', '3pagination_placement' );		
+			add_settings_field( 'threepagination_placement_header', __( 'Inject below header', parent::$_object->textdomain ), array( $this, 'placement_header' ), '3pagination', '3pagination_placement' );
+			add_settings_field( 'threepagination_placement_footer', __( 'Inject above footer', parent::$_object->textdomain ), array( $this, 'placement_footer' ), '3pagination', '3pagination_placement' );		
 			
-			add_settings_field( 'threepagination_placement_prepend', __( 'Prepend to', $this->textdomain ), array( $this, 'placement_prepend' ), '3pagination', '3pagination_placement' );		
-			add_settings_field( 'threepagination_placement_append', __( 'Append to', $this->textdomain ), array( $this, 'placement_append' ), '3pagination', '3pagination_placement' );		
+			add_settings_field( 'threepagination_placement_prepend', __( 'Prepend to', parent::$_object->textdomain ), array( $this, 'placement_prepend' ), '3pagination', '3pagination_placement' );		
+			add_settings_field( 'threepagination_placement_append', __( 'Append to', parent::$_object->textdomain ), array( $this, 'placement_append' ), '3pagination', '3pagination_placement' );		
 
+			add_settings_field( 'threepagination_other_maxnumpages', __( 'Max no. of pages', parent::$_object->textdomain ), array( $this, 'other_maxnumpages' ), '3pagination', '3pagination_other' );		
+			add_settings_field( 'threepagination_other_pretty', __( 'Pretty URLs enabled?', parent::$_object->textdomain ), array( $this, 'other_pretty' ), '3pagination', '3pagination_other' );
+			
 		}
 		
 		/** 
@@ -96,7 +110,7 @@ if ( !class_exists( 'threepagination_settings' ) ) {
 		 */
 		public function section_preview() {	
 			?>
-			<!--<span class="description"><?php _e( 'Preview of pagination' ); ?></span>-->
+			<!--<span class="description"><?php _e( 'Preview of pagination', parent::$_object->textdomain ); ?></span>-->
 			<?php			
 		}
 
@@ -107,7 +121,7 @@ if ( !class_exists( 'threepagination_settings' ) ) {
 		 */
 		public function section_labels() {
 			?>
-			<span class="description"><?php _e( 'Define the navigation labels characters' ); ?></span>
+			<span class="description"><?php _e( 'Define the navigation labels characters', parent::$_object->textdomain ); ?></span>
 			<?php
 		}
 		
@@ -118,9 +132,20 @@ if ( !class_exists( 'threepagination_settings' ) ) {
 		 */
 		public function section_css() {
 			?>
-			<span class="description"><?php _e( 'Set your stylesheet for the pagination' ); ?></span>
+			<span class="description"><?php _e( 'Set your stylesheet for the pagination', parent::$_object->textdomain ); ?></span>
 			<?php
 		}
+		
+		/**
+		 * Head of "Other options" section
+		 * 
+		 * @since 0.1 
+		 */
+		public function section_other() {
+			?>
+			<span class="description"><?php _e( '', parent::$_object->textdomain ); ?></span>
+			<?php
+		}		
 		
 		/**
 		 * Head of "placement" section
@@ -130,11 +155,11 @@ if ( !class_exists( 'threepagination_settings' ) ) {
 		public function section_placement() {
 			?>
 			<p>
-			<span class="description"><?php _e( '<b>Inject:</b> You can "inject" the navigation bar below the header or above the footer div. Your theme needs to have an according HTML structure (which most WordPress themes do).' ); ?></span>
+			<span class="description"><?php _e( '<b>Inject:</b> You can "inject" the navigation bar below the header or above the footer div. Your theme needs to have an according HTML structure (which most WordPress themes do).', parent::$_object->textdomain ); ?></span>
 			<br />
-			<span class="description"><?php _e( '<b>Append/Prepend:</b> You can specifiy a container into which the pagination will be prepended/appended. Write it CSS-style, i.e. #mycontainer' ); ?></span>
+			<span class="description"><?php _e( '<b>Append/Prepend:</b> You can specifiy a container into which the pagination will be prepended/appended. Write it CSS-style, i.e. #mycontainer', parent::$_object->textdomain ); ?></span>
 			<br />
-			<span class="description"><?php _e( '<b>Note:</b> If you want your site to degrade gracefully, you should additionaly hardcode the pagination function into your theme files: <input style="background-color:lightgrey" size="45" type="text" value="<noscript><?php threepagination::draw(); ?></noscript>"' ); ?></span>
+			<span class="description"><?php _e( '<b>Note:</b> If you want your site to degrade gracefully, you should additionaly hardcode the pagination function into your theme files: <input style="background-color:lightgrey" size="45" type="text" value="<noscript><?php threepagination::draw(); ?></noscript>"', parent::$_object->textdomain ); ?></span>
 			</p>
 			<?php
 		}
@@ -215,6 +240,90 @@ if ( !class_exists( 'threepagination_settings' ) ) {
 		}
 		
 		/**
+		 * Inject below header
+		 * 
+		 * @since 0.1
+		 */
+		public function placement_header() {
+
+			$settings = get_option( '3pagination_settings', TRUE );
+			?>
+			<input type="checkbox" name="3pagination_settings[placement_header_index]" <?php checked( $this->init_var( $settings, 'placement_header_index', FALSE ), 'on' ); ?> />
+			<label for="3pagination_settings[placement_header_index]"><?php _e( 'Index pages', parent::$_object->textdomain ); ?></label>
+			<input type="checkbox" name="3pagination_settings[placement_header_archive]" <?php checked( $this->init_var( $settings, 'placement_header_archive', FALSE ), 'on' ); ?> />
+			<label for="3pagination_settings[placement_header_archive]"><?php _e( 'Archive pages', parent::$_object->textdomain ); ?></label>
+			<input type="checkbox" name="3pagination_settings[placement_header_category]" <?php checked( $this->init_var( $settings, 'placement_header_category', FALSE ), 'on' ); ?> />
+			<label for="3pagination_settings[placement_header_category]"><?php _e( 'Category pages', parent::$_object->textdomain ); ?></label>			
+			<input type="checkbox" name="3pagination_settings[placement_header_search]" <?php checked( $this->init_var( $settings, 'placement_header_search', FALSE ), 'on' ); ?> />
+			<label for="3pagination_settings[placement_header_search]"><?php _e( 'Search pages', parent::$_object->textdomain ); ?></label>
+			<?php
+		}
+		
+		/**
+		 * Inject above footer
+		 * 
+		 * @since 0.1 
+		 */
+		public function placement_footer() {
+
+			$settings = get_option( '3pagination_settings', TRUE );
+			?>
+			<input type="checkbox" name="3pagination_settings[placement_footer_index]" <?php checked( $this->init_var( $settings, 'placement_footer_index', FALSE ), 'on' ); ?> />
+			<label for="3pagination_settings[placement_footer_index]"><?php _e( 'Index pages', parent::$_object->textdomain ); ?></label>
+			<input type="checkbox" name="3pagination_settings[placement_footer_archive]" <?php checked( $this->init_var( $settings, 'placement_footer_archive', FALSE ), 'on' ); ?> />
+			<label for="3pagination_settings[placement_footer_archive]"><?php _e( 'Archive pages', parent::$_object->textdomain ); ?></label>
+			<input type="checkbox" name="3pagination_settings[placement_footer_category]" <?php checked( $this->init_var( $settings, 'placement_footer_category', FALSE ), 'on' ); ?> />
+			<label for="3pagination_settings[placement_footer_category]"><?php _e( 'Category pages', parent::$_object->textdomain ); ?></label>			
+			<input type="checkbox" name="3pagination_settings[placement_footer_search]" <?php checked( $this->init_var( $settings, 'placement_footer_search', FALSE ), 'on' ); ?> />
+			<label for="3pagination_settings[placement_footer_search]"><?php _e( 'Search pages', parent::$_object->textdomain ); ?></label>			
+			<?php
+		}
+		
+		/**
+		 * Prepend to custom container
+		 * 
+		 * @since 0.1 
+		 */
+		public function placement_prepend() {
+
+			$settings = get_option( '3pagination_settings', TRUE );
+			?>
+			<input type="text" name="3pagination_settings[placement_prepend_id]" value="<?php echo $this->init_var( $settings, 'placement_prepend_id', FALSE ); ?>" />			
+			<label for="3pagination_settings[placement_prepend_id]"><?php _e( 'in', parent::$_object->textdomain ); ?></label>			
+			<input type="checkbox" name="3pagination_settings[placement_prepend_index]" <?php checked( $this->init_var( $settings, 'placement_prepend_index', FALSE ), 'on' ); ?> />
+			<label for="3pagination_settings[placement_prepend_index]"><?php _e( 'Index pages', parent::$_object->textdomain ); ?></label>
+			<input type="checkbox" name="3pagination_settings[placement_prepend_archive]" <?php checked( $this->init_var( $settings, 'placement_prepend_archive', FALSE ), 'on' ); ?> />
+			<label for="3pagination_settings[placement_prepend_archive]"><?php _e( 'Archive pages', parent::$_object->textdomain ); ?></label>
+			<input type="checkbox" name="3pagination_settings[placement_prepend_category]" <?php checked( $this->init_var( $settings, 'placement_prepend_category', FALSE ), 'on' ); ?> />
+			<label for="3pagination_settings[placement_prepend_category]"><?php _e( 'Category pages', parent::$_object->textdomain ); ?></label>	
+			<input type="checkbox" name="3pagination_settings[placement_prepend_search]" <?php checked( $this->init_var( $settings, 'placement_prepend_search', FALSE ), 'on' ); ?> />
+			<label for="3pagination_settings[placement_prepend_search]"><?php _e( 'Search pages', parent::$_object->textdomain ); ?></label>			
+			<?php
+		}
+		
+		/**
+		 * Append to custom container
+		 * 
+		 * @since 0.1 
+		 */
+		public function placement_append() {
+
+			$settings = get_option( '3pagination_settings', TRUE );
+			?>
+			<input type="text" name="3pagination_settings[placement_append_id]" value="<?php echo $this->init_var( $settings, 'placement_append_id', FALSE ); ?>" />			
+			<label for="3pagination_settings[placement_append_id]"><?php echo _x( 'in', 'Zeige Pagination "in" diesen Seiten an', parent::$_object->textdomain ); ?></label>						
+			<input type="checkbox" name="3pagination_settings[placement_append_index]" <?php checked( $this->init_var( $settings, 'placement_append_index', FALSE ), 'on' ); ?> />
+			<label for="3pagination_settings[placement_append_index]"><?php _e( 'Index pages', parent::$_object->textdomain ); ?></label>
+			<input type="checkbox" name="3pagination_settings[placement_append_archive]" <?php checked( $this->init_var( $settings, 'placement_append_archive', FALSE ), 'on' ); ?> />
+			<label for="3pagination_settings[placement_append_archive]"><?php _e( 'Archive pages', parent::$_object->textdomain ); ?></label>
+			<input type="checkbox" name="3pagination_settings[placement_append_category]" <?php checked( $this->init_var( $settings, 'placement_append_category', FALSE ), 'on' ); ?> />
+			<label for="3pagination_settings[placement_append_category]"><?php _e( 'Category pages', parent::$_object->textdomain ); ?></label>	
+			<input type="checkbox" name="3pagination_settings[placement_append_search]" <?php checked( $this->init_var( $settings, 'placement_append_search', FALSE ), 'on' ); ?> />
+			<label for="3pagination_settings[placement_append_search]"><?php _e( 'Search pages', parent::$_object->textdomain ); ?></label>
+			<?php
+		}
+
+		/**
 		 * Set CSS class
 		 * 
 		 * @since 0.1 
@@ -229,91 +338,25 @@ if ( !class_exists( 'threepagination_settings' ) ) {
 				<?php	
 		}
 		
-		/**
-		 * Inject below header
-		 * 
-		 * @since 0.1
-		 */
-		public function placement_header() {
-
+		public function other_maxnumpages() {
+			
 			$settings = get_option( '3pagination_settings', TRUE );
 			?>
-			<input type="checkbox" name="3pagination_settings[placement_header_index]" <?php checked( $this->init_var( $settings, 'placement_header_index', FALSE ), 'on' ); ?> />
-			<label for="3pagination_settings[placement_header_index]"><?php _e( 'Index pages' ); ?></label>
-			<input type="checkbox" name="3pagination_settings[placement_header_archive]" <?php checked( $this->init_var( $settings, 'placement_header_archive', FALSE ), 'on' ); ?> />
-			<label for="3pagination_settings[placement_header_archive]"><?php _e( 'Archive pages' ); ?></label>
-			<input type="checkbox" name="3pagination_settings[placement_header_category]" <?php checked( $this->init_var( $settings, 'placement_header_category', FALSE ), 'on' ); ?> />
-			<label for="3pagination_settings[placement_header_category]"><?php _e( 'Category pages' ); ?></label>			
-			<input type="checkbox" name="3pagination_settings[placement_header_search]" <?php checked( $this->init_var( $settings, 'placement_header_search', FALSE ), 'on' ); ?> />
-			<label for="3pagination_settings[placement_header_search]"><?php _e( 'Search pages' ); ?></label>
-			<?php
+			<input type="text" name="3pagination_settings[other_maxnumpages]" value="<?php echo $this->init_var( $settings, 'other_maxnumpages', '999', TRUE ); ?>" />
+			<br />
+			<span class="description">Limit to a maximum number of pagelinks</span>
+				<?php	
 		}
 		
-		/**
-		 * Inject above footer
-		 * 
-		 * @since 0.1 
-		 */
-		public function placement_footer() {
-
+		public function other_pretty() {
+			
 			$settings = get_option( '3pagination_settings', TRUE );
+					
 			?>
-			<input type="checkbox" name="3pagination_settings[placement_footer_index]" <?php checked( $this->init_var( $settings, 'placement_footer_index', FALSE ), 'on' ); ?> />
-			<label for="3pagination_settings[placement_footer_index]"><?php _e( 'Index pages' ); ?></label>
-			<input type="checkbox" name="3pagination_settings[placement_footer_archive]" <?php checked( $this->init_var( $settings, 'placement_footer_archive', FALSE ), 'on' ); ?> />
-			<label for="3pagination_settings[placement_footer_archive]"><?php _e( 'Archive pages' ); ?></label>
-			<input type="checkbox" name="3pagination_settings[placement_footer_category]" <?php checked( $this->init_var( $settings, 'placement_footer_category', FALSE ), 'on' ); ?> />
-			<label for="3pagination_settings[placement_footer_category]"><?php _e( 'Category pages' ); ?></label>			
-			<input type="checkbox" name="3pagination_settings[placement_footer_search]" <?php checked( $this->init_var( $settings, 'placement_footer_search', FALSE ), 'on' ); ?> />
-			<label for="3pagination_settings[placement_footer_search]"><?php _e( 'Search pages' ); ?></label>			
-			<?php
+			<input type="checkbox" name="3pagination_settings[other_pretty]" <?php checked( $this->init_var( $settings, 'other_pretty', 'on' ), 'on' ); ?> />
+			<?php	
 		}
 		
-		/**
-		 * Prepend to custom container
-		 * 
-		 * @since 0.1 
-		 */
-		public function placement_prepend() {
-
-			$settings = get_option( '3pagination_settings', TRUE );
-			?>
-			<input type="text" name="3pagination_settings[placement_prepend_id]" value="<?php echo $this->init_var( $settings, 'placement_prepend_id', FALSE ); ?>" />			
-			<label for="3pagination_settings[placement_prepend_id]"><?php _e( 'in' ); ?></label>			
-			<input type="checkbox" name="3pagination_settings[placement_prepend_index]" <?php checked( $this->init_var( $settings, 'placement_prepend_index', FALSE ), 'on' ); ?> />
-			<label for="3pagination_settings[placement_prepend_index]"><?php _e( 'Index pages' ); ?></label>
-			<input type="checkbox" name="3pagination_settings[placement_prepend_archive]" <?php checked( $this->init_var( $settings, 'placement_prepend_archive', FALSE ), 'on' ); ?> />
-			<label for="3pagination_settings[placement_prepend_archive]"><?php _e( 'Archive pages' ); ?></label>
-			<input type="checkbox" name="3pagination_settings[placement_prepend_category]" <?php checked( $this->init_var( $settings, 'placement_prepend_category', FALSE ), 'on' ); ?> />
-			<label for="3pagination_settings[placement_prepend_category]"><?php _e( 'Category pages' ); ?></label>	
-			<input type="checkbox" name="3pagination_settings[placement_prepend_search]" <?php checked( $this->init_var( $settings, 'placement_prepend_search', FALSE ), 'on' ); ?> />
-			<label for="3pagination_settings[placement_prepend_search]"><?php _e( 'Search pages' ); ?></label>			
-			<?php
-		}
-		
-		/**
-		 * Append to custom container
-		 * 
-		 * @since 0.1 
-		 */
-		public function placement_append() {
-
-			$settings = get_option( '3pagination_settings', TRUE );
-			?>
-			<input type="text" name="3pagination_settings[placement_append_id]" value="<?php echo $this->init_var( $settings, 'placement_append_id', FALSE ); ?>" />			
-			<label for="3pagination_settings[placement_append_id]"><?php _e( 'in' ); ?></label>						
-			<input type="checkbox" name="3pagination_settings[placement_append_index]" <?php checked( $this->init_var( $settings, 'placement_append_index', FALSE ), 'on' ); ?> />
-			<label for="3pagination_settings[placement_append_index]"><?php _e( 'Index pages' ); ?></label>
-			<input type="checkbox" name="3pagination_settings[placement_append_archive]" <?php checked( $this->init_var( $settings, 'placement_append_archive', FALSE ), 'on' ); ?> />
-			<label for="3pagination_settings[placement_append_archive]"><?php _e( 'Archive pages' ); ?></label>
-			<input type="checkbox" name="3pagination_settings[placement_append_category]" <?php checked( $this->init_var( $settings, 'placement_append_category', FALSE ), 'on' ); ?> />
-			<label for="3pagination_settings[placement_append_category]"><?php _e( 'Category pages' ); ?></label>	
-			<input type="checkbox" name="3pagination_settings[placement_append_search]" <?php checked( $this->init_var( $settings, 'placement_append_search', FALSE ), 'on' ); ?> />
-			<label for="3pagination_settings[placement_append_search]"><?php _e( 'Search pages' ); ?></label>
-			<?php
-		}
-
-
 		/**
 		 * Validate user input
 		 * 
@@ -324,7 +367,7 @@ if ( !class_exists( 'threepagination_settings' ) ) {
 		 * @since 0.1
 		 */
 		public function threepagination_validate( $data ) {
-
+			
 			$settings = get_option( '3pagination_settings' );
 
 			$settings[ 'labels_show' ] = esc_attr( $data[ 'labels_show' ] );
@@ -357,14 +400,8 @@ if ( !class_exists( 'threepagination_settings' ) ) {
 			$settings[ 'placement_append_search' ] = esc_attr( $data[ 'placement_append_search' ] );
 			$settings[ 'placement_append_category' ] = esc_attr( $data[ 'placement_append_category' ] );
 			
-			
-			// Set this option to determine whether to display serverside fallback pagination
-			foreach( $settings AS $key => $value ) {
-				if ( 0 === strpos( $key, 'placement_' ) && ! empty( $value ) ) { 
-						$settings[ 'hide_serverside' ] = TRUE;
-						break;	
-				}
-			}
+			$settings[ 'other_maxnumpages' ] = intval( $data[ 'other_maxnumpages' ] );
+			$settings[ 'other_pretty' ] = esc_attr( $data[ 'other_pretty' ] );
 
 			return $settings;
 		}
