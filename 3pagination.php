@@ -61,7 +61,7 @@ if ( !class_exists( 'threepagination' ) ) {
 
 			// Set textdomain string
 			add_filter( 'init', array( $this, 'set_textdomain' ), 1 );
-			add_filter( 'init', array( $this, 'load_textdomain' ), 2 );
+			add_filter( 'init', array( $this, 'load_plugin_textdomain' ), 2 );
 
 			add_filter( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
 			add_filter( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
@@ -87,7 +87,7 @@ if ( !class_exists( 'threepagination' ) ) {
 			$this->textdomain = '3pagination';
 		}
 
-		public function load_textdomain() {
+		public function load_plugin_textdomain() {
 
 			load_plugin_textdomain( $this->textdomain, FALSE, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 		}
