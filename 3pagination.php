@@ -7,12 +7,6 @@
  * Author: Michael Schröder <ms@ts-webdesign.net>
  * TextDomain: 3pagination
  * DomainPath: /languages
- * 
- * Available filters:
- * 
- * threepagination_help
- * - gets passed the help tab content before displaying
- * 
  */
 if ( !class_exists( 'threepagination' ) ) {
 
@@ -343,7 +337,9 @@ if ( !class_exists( 'threepagination' ) ) {
 			if ( strpos( $base_url, '=' ) ) {
 				// has at least one param
 				$params = parse_url( $base_url );
-				$url.= ( TRUE == $pretty ) ? '?' . $params[ 'query' ] : '&' . $params[ 'query' ];
+				$params_default = preg_replace( '!&?paged=\d{1,3}&?!', '', $params[ 'query' ] );
+				
+				$url.= ( TRUE == $pretty ) ? '?' . $params[ 'query' ] : ( '' == $params_default ) ? '' : '&' . $params_default;
 			}			
 
 			return $url;
@@ -383,6 +379,8 @@ if ( !class_exists( 'threepagination' ) ) {
 			
 			delete_option( '3pagination_settings' );
 		}
+
 	}
+
 }
 ?>

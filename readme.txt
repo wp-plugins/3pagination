@@ -95,6 +95,7 @@ Save the pagination in the `$string` var.
 - Plugin loading enqueued;
 - Fixed bug with pagination link;
 - Contextual help tab
+- Fixed bug with default URLs pagination links
 
 == A brief Markdown Example ==
 
