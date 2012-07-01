@@ -98,6 +98,11 @@ Save the pagination in the `$string` var.
 - Fixed bug with default URLs pagination links
 
 == A brief Markdown Example ==
-
 `<?php if ( class_exists( 'threepagination' ) ) : threepagination::draw(); endif; ?>`
 `<?php if ( class_exists( 'threepagination' ) ) : threepagination::get(); endif; ?>`
+
+== Translations ==
+<ul>
+<li>English</li>
+<li>German</li>
+</ul>
