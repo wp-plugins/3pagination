@@ -7,11 +7,22 @@
  * Author: Michael Schröder <ms@ts-webdesign.net>
  * TextDomain: 3pagination
  * DomainPath: /languages
+ * 
+ * Available filters:
+ * 
+ * threepagination_help
+ * - gets passed the help tab content before displaying
+ * 
  */
 if ( !class_exists( 'threepagination' ) ) {
 
-	if ( function_exists( 'add_filter' ) )
+	if ( function_exists( 'add_filter' ) ) {
+		
 		add_filter( 'plugins_loaded', array( 'threepagination', 'get_object' ) );
+		
+		// Upon deactivation
+		register_deactivation_hook( __FILE__, array( 'threepagination', 'deactivate' ) );
+	}
 
 	class threepagination {
 
@@ -362,8 +373,16 @@ if ( !class_exists( 'threepagination' ) ) {
 
 			return $var[ $index ];
 		}
-
+		
+		/**
+		 * Cleanup
+		 * 
+		 * @since 1.3b 
+		 */
+		public static function deactivate() {
+			
+			delete_option( '3pagination_settings' );
+		}
 	}
-
 }
 ?>

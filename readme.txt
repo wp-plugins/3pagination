@@ -94,6 +94,7 @@ Save the pagination in the `$string` var.
 - German localization;
 - Plugin loading enqueued;
 - Fixed bug with pagination link;
+- Contextual help tab
 
 == A brief Markdown Example ==
 
