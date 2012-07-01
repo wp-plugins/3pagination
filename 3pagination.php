@@ -338,8 +338,13 @@ if ( !class_exists( 'threepagination' ) ) {
 				// has at least one param
 				$params = parse_url( $base_url );
 				$params_default = preg_replace( '!&?paged=\d{1,3}&?!', '', $params[ 'query' ] );
-				
-				$url.= ( TRUE == $pretty ) ? '?' . $params[ 'query' ] : ( '' == $params_default ) ? '' : '&' . $params_default;
+
+				if ( TRUE == $pretty )
+					$url.= '?' . $params[ 'query' ];
+				else if ( '' == $params_default )
+					$url.= '';
+				else
+					$url.= '&' . $params_default;
 			}			
 
 			return $url;
