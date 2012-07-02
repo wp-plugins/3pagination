@@ -3,7 +3,7 @@ Contributors: paddelboot
 Tags: pagination
 Requires at least: 3.3.2
 Tested up to: 3.4.1
-Stable tag: 1.3b
+Stable tag: 1.3.1b
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,7 @@ Give your visitors the ability to easily access all your site's content. Any pag
 <li>No need to modify theme files! (see installation instructions)</li>
 <li>Modify labels and CSS and preview pagination in backend before using it in your frontend pages!</li>
 <li>Both default and pretty permalink structure are supported</li>
-<li>So far, this code has been tested on index, archive, category and search pages of some of the most popular WordPress themes.</li>
+<li>So far, this code has been tested on index, archive, custom post type archive, category and search pages of some of the most popular WordPress themes.</li>
 </ul>
 Please leave feedback, bug reports or comments at https://github.com/paddelboot/3pagination/issues
 
@@ -95,7 +95,10 @@ Save the pagination in the `$string` var.
 - Plugin loading enqueued;
 - Fixed bug with pagination link;
 - Contextual help tab
-- Fixed bug with default URLs pagination links
+- Fixed bug with default URLs pagination link
+
+= 1.3.1b =
+- New function parameter $wp_query: support for custom query object
 
 == A brief Markdown Example ==
 `<?php if ( class_exists( 'threepagination' ) ) : threepagination::draw(); endif; ?>`

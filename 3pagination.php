@@ -15,7 +15,7 @@ if ( !class_exists( 'threepagination' ) ) {
 		add_filter( 'plugins_loaded', array( 'threepagination', 'get_object' ) );
 		
 		// Upon deactivation
-		register_deactivation_hook( __FILE__, array( 'threepagination', 'deactivate' ) );
+		register_uninstall_hook( __FILE__, array( 'threepagination', 'uninstall' ) );
 	}
 
 	class threepagination {
@@ -118,6 +118,8 @@ if ( !class_exists( 'threepagination' ) ) {
 		/**
 		 * Set frontend vars
 		 * 
+		 * @TODO: Pages, Custom post types?
+		 * 
 		 * @return type 
 		 * @since 1.2b
 		 */
@@ -174,10 +176,14 @@ if ( !class_exists( 'threepagination' ) ) {
 		 * @return void 
 		 * @since 0.1a
 		 */
-		public static function get( $pretty = TRUE, $max_num_pages = FALSE, $labels = TRUE, $css = 'classic' ) {
+		public static function get( $pretty = TRUE, $max_num_pages = FALSE, $labels = TRUE, $css = 'classic', $wp_query = FALSE ) {
 
-			global $wp_query, $wp;
-
+			global $wp;
+		
+			// Set current query object
+			if ( FALSE == $wp_query || ! is_object( $wp_query ) )
+				global $wp_query;
+			
 			// Get global settings
 			$settings = get_option( '3pagination_settings' );
 
@@ -302,9 +308,9 @@ if ( !class_exists( 'threepagination' ) ) {
 		 * 
 		 * @since 0.1a
 		 */
-		public static function draw( $pretty = TRUE, $max_num_pages = FALSE, $labels = TRUE, $css = 'classic' ) {
+		public static function draw( $pretty = TRUE, $max_num_pages = FALSE, $labels = TRUE, $css = 'classic', $wp_query = FALSE ) {
 
-			echo self::get( $pretty, $max_num_pages, $labels, $css );
+			echo self::get( $pretty, $max_num_pages, $labels, $css, $wp_query );
 		}
 
 		/**
@@ -380,7 +386,7 @@ if ( !class_exists( 'threepagination' ) ) {
 		 * 
 		 * @since 1.3b 
 		 */
-		public static function deactivate() {
+		public static function uninstall() {
 			
 			delete_option( '3pagination_settings' );
 		}
