@@ -45,20 +45,21 @@ If you are unsure about the HTML structure of your Website, you can do the follo
 You can, if you want (or to have your website degrade gracefully), call the class methods in your theme files.
 
 draw() : Display the pagination
-`draw ( $pretty = TRUE, $max_num_pages = FALSE, $labels = TRUE, $css = 'classic' )`
+`draw ( $pretty = TRUE, $max_num_pages = FALSE, $labels = TRUE, $css = 'classic', $wp_query = FALSE )`
 <ul>
 <li>$pretty (optional) | Are you using pretty permalinks?</li>
 <li>$max_num_pages (optional) | Limit to a maximum number of pages</li>
 <li>$labels (optional) | Display or not the navigation arrows</li>
 <li>$css (optional) | CSS class name that will be appended to the main div container</li>
+<li>$wp_query (optional) | custom WP query object
 </ul>
 
 get() : Return the pagination as a HTML string
-`get ( $pretty = TRUE, $num_items = FALSE, $per_page = FALSE, $labels = TRUE, $css = 'classic' )`
+`get ( $pretty = TRUE, $num_items = FALSE, $per_page = FALSE, $labels = TRUE, $css = 'classic', $wp_query = FALSE )`
 
 <h4>Example usages</h4>
-`threepagination::draw ( TRUE, FALSE, FALSE, 'my_custom_class' )`
-Displays the pagination on a website that uses pretty urls, takes the standard page count, hides the navigation arrows and uses a CSS class 'my_custom_class'
+`threepagination::draw ( TRUE, FALSE, FALSE, 'my_custom_class', FALSE )`
+Displays the pagination on a website that uses pretty urls, takes the standard page count, hides the navigation arrows, attributes a CSS class 'my_custom_class' to the pagination container and uses the global query object.
 
 `$string = threepagination::get ()`
 Save the pagination in the `$string` var.
