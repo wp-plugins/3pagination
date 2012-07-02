@@ -98,7 +98,7 @@ Save the pagination in the `$string` var.
 - Fixed bug with default URLs pagination link
 
 = 1.3.1b =
-- New function parameter $wp_query: support for custom query object
+- New function parameter $wp_query : support for custom query object
 
 == A brief Markdown Example ==
 `<?php if ( class_exists( 'threepagination' ) ) : threepagination::draw(); endif; ?>`
