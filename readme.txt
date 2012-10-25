@@ -3,7 +3,7 @@ Contributors: paddelboot
 Tags: pagination
 Requires at least: 3.3.2
 Tested up to: 3.4.1
-Stable tag: 1.3.1b
+Stable tag: 1.3.2b
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -101,6 +101,9 @@ Save the pagination in the `$string` var.
 
 = 1.3.1b =
 - New function parameter $wp_query : support for custom query object
+
+= 1.3.2b =
+- Fixed error message in options screen after fresh install
 
 == A brief Markdown Example ==
 `<?php if ( class_exists( 'threepagination' ) ) : threepagination::draw(); endif; ?>`

@@ -230,7 +230,7 @@ if ( !class_exists( 'threepagination_settings' ) ) {
 		 */
 		public function labels_previous() {
 
-			$settings = get_option( '3pagination_settings', TRUE );
+			$settings = (array) get_option( '3pagination_settings', TRUE );
 			?>
 			<input type="text" name="3pagination_settings[labels_previous]" value="<?php echo $this->init_var( $settings, 'labels_previous', '&lsaquo;', TRUE ); ?>" />
 			<?php
@@ -243,7 +243,7 @@ if ( !class_exists( 'threepagination_settings' ) ) {
 		 */
 		public function labels_next() {
 
-			$settings = get_option( '3pagination_settings', TRUE );
+			$settings = (array) get_option( '3pagination_settings', TRUE );
 			?>
 			<input type="text" name="3pagination_settings[labels_next]" value="<?php echo $this->init_var( $settings, 'labels_next', '&rsaquo;', TRUE ); ?>" />
 			<?php
@@ -256,7 +256,7 @@ if ( !class_exists( 'threepagination_settings' ) ) {
 		 */
 		public function labels_first() {
 
-			$settings = get_option( '3pagination_settings', TRUE );
+			$settings = (array) get_option( '3pagination_settings', TRUE );
 			?>
 			<input type="text" name="3pagination_settings[labels_first]" value="<?php echo $this->init_var( $settings, 'labels_first', '&laquo;', TRUE ); ?>" />
 			<?php
@@ -269,7 +269,7 @@ if ( !class_exists( 'threepagination_settings' ) ) {
 		 */
 		public function labels_last() {
 
-			$settings = get_option( '3pagination_settings', TRUE );
+			$settings = (array) get_option( '3pagination_settings', TRUE );
 			?>
 			<input type="text" name="3pagination_settings[labels_last]" value="<?php echo $this->init_var( $settings, 'labels_last', '&raquo;', TRUE ); ?>" />
 			<?php
@@ -302,7 +302,7 @@ if ( !class_exists( 'threepagination_settings' ) ) {
 		 */
 		public function placement_footer() {
 
-			$settings = get_option( '3pagination_settings', TRUE );
+			$settings = (array) get_option( '3pagination_settings', TRUE );
 			?>
 			<input type="checkbox" name="3pagination_settings[placement_footer_index]" <?php checked( $this->init_var( $settings, 'placement_footer_index', FALSE ), 'on' ); ?> />
 			<label for="3pagination_settings[placement_footer_index]"><?php _e( 'Index pages', parent::$_object->textdomain ); ?></label>
@@ -322,7 +322,7 @@ if ( !class_exists( 'threepagination_settings' ) ) {
 		 */
 		public function placement_prepend() {
 
-			$settings = get_option( '3pagination_settings', TRUE );
+			$settings = (array) get_option( '3pagination_settings', TRUE );
 			?>
 			<input type="text" name="3pagination_settings[placement_prepend_id]" value="<?php echo $this->init_var( $settings, 'placement_prepend_id', FALSE ); ?>" />			
 			<label for="3pagination_settings[placement_prepend_id]"><?php _e( 'in', parent::$_object->textdomain ); ?></label>			
@@ -344,7 +344,7 @@ if ( !class_exists( 'threepagination_settings' ) ) {
 		 */
 		public function placement_append() {
 
-			$settings = get_option( '3pagination_settings', TRUE );
+			$settings = (array) get_option( '3pagination_settings', TRUE );
 			?>
 			<input type="text" name="3pagination_settings[placement_append_id]" value="<?php echo $this->init_var( $settings, 'placement_append_id', FALSE ); ?>" />			
 			<label for="3pagination_settings[placement_append_id]"><?php echo _x( 'in', 'Zeige Pagination "in" diesen Seiten an', parent::$_object->textdomain ); ?></label>						
@@ -366,7 +366,7 @@ if ( !class_exists( 'threepagination_settings' ) ) {
 		 */
 		public function css_class() {
 
-			$settings = get_option( '3pagination_settings', TRUE );
+			$settings = (array) get_option( '3pagination_settings', TRUE );
 			?>
 			<input type="text" name="3pagination_settings[css_class]" value="<?php echo $this->init_var( $settings, 'css_class', 'classic', TRUE ); ?>" />
 			<br />
@@ -376,7 +376,7 @@ if ( !class_exists( 'threepagination_settings' ) ) {
 
 		public function other_maxnumpages() {
 
-			$settings = get_option( '3pagination_settings', TRUE );
+			$settings = (array) get_option( '3pagination_settings', TRUE );
 			?>
 			<input type="text" name="3pagination_settings[other_maxnumpages]" value="<?php echo $this->init_var( $settings, 'other_maxnumpages', '999', TRUE ); ?>" />
 			<br />
@@ -386,7 +386,7 @@ if ( !class_exists( 'threepagination_settings' ) ) {
 
 		public function other_pretty() {
 
-			$settings = get_option( '3pagination_settings', TRUE );
+			$settings = (array) get_option( '3pagination_settings', TRUE );
 			?>
 			<input type="checkbox" name="3pagination_settings[other_pretty]" <?php checked( $this->init_var( $settings, 'other_pretty', 'on' ), 'on' ); ?> />
 			<?php
@@ -403,7 +403,7 @@ if ( !class_exists( 'threepagination_settings' ) ) {
 		 */
 		public function threepagination_validate( $data ) {
 
-			$settings = get_option( '3pagination_settings' );
+			$settings = (array) get_option( '3pagination_settings' );
 
 			$settings[ 'labels_show' ] = esc_attr( $data[ 'labels_show' ] );
 			$settings[ 'labels_previous' ] = esc_attr( $data[ 'labels_previous' ] );
