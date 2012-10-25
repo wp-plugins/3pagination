@@ -282,7 +282,7 @@ if ( !class_exists( 'threepagination_settings' ) ) {
 		 */
 		public function placement_header() {
 
-			$settings = get_option( '3pagination_settings', TRUE );
+			$settings = (array) get_option( '3pagination_settings', TRUE );
 			?>
 			<input type="checkbox" name="3pagination_settings[placement_header_index]" <?php checked( $this->init_var( $settings, 'placement_header_index', FALSE ), 'on' ); ?> />
 			<label for="3pagination_settings[placement_header_index]"><?php _e( 'Index pages', parent::$_object->textdomain ); ?></label>
