@@ -3,7 +3,7 @@
 /**
  * Plugin Name: 3pagination
  * Description: Reach any page with no more than 3 clicks
- * Version: 1.3.2b
+ * Version: 1.3.3b
  * Author: Michael Schröder <ms@ts-webdesign.net>
  * TextDomain: 3pagination
  * DomainPath: /languages
