@@ -114,3 +114,7 @@ Save the pagination in the `$string` var.
 <li>English</li>
 <li>German</li>
 </ul>
+
+== Homepage ==
+
+http://meilenstein.ms
